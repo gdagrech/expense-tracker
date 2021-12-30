@@ -1,7 +1,7 @@
-import ExpenseForm from "./ExpenseForm";
-import { useState } from "react";
+import ExpenseForm from './ExpenseForm';
+import {useState} from 'react';
 
-import "./NewExpense.css";
+import './NewExpense.css';
 
 const NewExpense = (props) => {
   const [isEdtiting, setIsEditing] = useState(false);
@@ -17,7 +17,7 @@ const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
-      id: Math.random().toString(),
+      id: Math.random().toString()
     };
     props.onAddExpense(expenseData);
     setIsEditing(false);
@@ -25,14 +25,9 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      {!isEdtiting && (
-        <button onClick={startEditingHandler}>Add New Expense</button>
-      )}
+      {!isEdtiting && <button onClick={startEditingHandler}>Add New Expense</button>}
       {isEdtiting && (
-        <ExpenseForm
-          onSaveExpenseData={saveExpenseDataHandler}
-          onCancel={stopEditingHandler}
-        />
+        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={stopEditingHandler} />
       )}
     </div>
   );
